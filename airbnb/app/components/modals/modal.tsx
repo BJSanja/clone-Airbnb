@@ -2,6 +2,7 @@
 
 import React, { useCallback, useEffect, useState } from "react";
 import { IoMdClose } from "react-icons/io";
+import Button from "../button";
 
 interface ModalProps {
   isOpen?: boolean;
@@ -101,14 +102,25 @@ const Modal: React.FC<ModalProps> = ({
                 <div className="text-lg font-semibold">{title}</div>
               </div>
               {/*Body */}
-              <div className="relative flex-auto p-6">
-                {body}
-              </div>
+              <div className="relative flex-auto p-6">{body}</div>
               {/*footer*/}
               <div className="flex flex-col gap-2 p-6">
-                <div className="flex flex-row items-center w-full gap-4 "
-></div>
+                <div className="flex flex-row items-center w-full gap-4 ">
+                  {secondaryAction && secondaryActionLabel && (
+                    <Button
+                      outline
+                      disabled={disabled}
+                      label={secondaryActionLabel}
+                      onClick={handleSecondaryAction}
+                    />
+                  )}
 
+                  <Button
+                    disabled={disabled}
+                    label={actionLabel}
+                    onClick={handleSubmit}
+                  />
+                </div>
               </div>
             </div>
           </div>
