@@ -5,6 +5,8 @@ import "./globals.css";
 import Navbar from "./components/navbar/navbar";
 
 import { Nunito } from "next/font/google";
+import ClientOnly from "./components/clientonly";
+import Modal from "./components/modals/modal";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -24,7 +26,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={font.className}>
-        <Navbar />
+        <ClientOnly>
+          {/**/}
+        {/* <Modal title="modal" isOpen/> */}
+          <Navbar />
+          </ClientOnly>
         {children}
       </body>
     </html>
