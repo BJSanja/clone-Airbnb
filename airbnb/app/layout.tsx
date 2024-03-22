@@ -2,17 +2,19 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 
-import { Nunito } from 'next/font/google'
+import Navbar from "./components/navbar/navbar";
+
+import { Nunito } from "next/font/google";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Airbnb",
-  description: "airbnb clone app",
+  description: "Airbnb clone app",
 };
 
-const font=Nunito({
-  subsets:["latin"]
-})
+const font = Nunito({
+  subsets: ["latin"],
+});
 
 export default function RootLayout({
   children,
@@ -21,7 +23,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={font.className}>{children}</body>
+      <body className={font.className}>
+        <Navbar />
+        {children}
+      </body>
     </html>
   );
 }
