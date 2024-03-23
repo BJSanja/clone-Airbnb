@@ -21,7 +21,7 @@ const Button: React.FC<ButtonProps> = ({
 }) => {
   return (
     <button
-    onClick={onClick}
+      onClick={onClick}
       disabled={disabled}
       className={`
         relative

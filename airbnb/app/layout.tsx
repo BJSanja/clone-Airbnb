@@ -29,11 +29,11 @@ export default function RootLayout({
     <html lang="en">
       <body className={font.className}>
         <ClientOnly>
-          <TosterProvider/>
+          <TosterProvider />
           {/**/}
-        <RegisterModal/>
+          <RegisterModal />
           <Navbar />
-          </ClientOnly>
+        </ClientOnly>
         {children}
       </body>
     </html>
