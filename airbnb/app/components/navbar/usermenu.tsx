@@ -4,14 +4,16 @@ import { AiOutlineAccountBook, AiOutlineMenu } from "react-icons/ai";
 import Avatar from "../avatar";
 import { useCallback, useState } from "react";
 import MenuItem from "./menuitem";
+import useRegisterModal from "@/app/hooks/useregistermodel";
 
 const UserMenu = () => {
-    const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+  const registerModal =useRegisterModal();
 
-    const toggleOpen = useCallback(() => { //reverse the current value
-        setIsOpen((value) => !value);
-      }, []);
-    
+  const toggleOpen = useCallback(() => {
+    //reverse the current value
+    setIsOpen((value) => !value);
+  }, []);
 
   return (
     <div className="relative ">
@@ -22,7 +24,8 @@ const UserMenu = () => {
         >
           Airbnb Home
         </div>
-        <div onClick={toggleOpen}
+        <div
+          onClick={toggleOpen}
           className="p-4
           md:py-1
           md:px-2
@@ -35,17 +38,17 @@ const UserMenu = () => {
           rounded-full 
           cursor-pointer 
           hover:shadow-md 
-          transition">
-            <AiOutlineMenu/>
-            <div className="hidden md:block ">
-                <Avatar/>
-
-            </div>
+          transition"
+        >
+          <AiOutlineMenu />
+          <div className="hidden md:block ">
+            <Avatar />
+          </div>
         </div>
       </div>
-    {isOpen &&  (
+      {isOpen && (
         <div
-        className="absolute 
+          className="absolute 
         rounded-xl 
         shadow-md
         w-[40vw]
@@ -56,22 +59,15 @@ const UserMenu = () => {
         top-12 
         text-sm
 "
-        ><div className="flex flex-col cursor-pointer">
+        >
+          <div className="flex flex-col cursor-pointer">
             <>
-            <MenuItem
-               label="Login" 
-               onClick={() => {}}
-
-            />
-            <MenuItem
-               label="Sign up" 
-               onClick={() => {}}
-
-            />
+              <MenuItem label="Login" onClick={() => {}} />
+              <MenuItem label="Sign up" onClick={registerModal.onOpen} />
             </>
-            </div>  </div>
-    )}
-
+          </div>{" "}
+        </div>
+      )}
     </div>
   );
 };

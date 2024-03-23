@@ -6,7 +6,9 @@ import Navbar from "./components/navbar/navbar";
 
 import { Nunito } from "next/font/google";
 import ClientOnly from "./components/clientonly";
-import Modal from "./components/modals/modal";
+
+import RegisterModal from "./components/modals/registermodal";
+import TosterProvider from "./providers/tosterprovider";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -27,8 +29,9 @@ export default function RootLayout({
     <html lang="en">
       <body className={font.className}>
         <ClientOnly>
+          <TosterProvider/>
           {/**/}
-        <Modal actionLabel="Submit" title="modal" isOpen/>
+        <RegisterModal/>
           <Navbar />
           </ClientOnly>
         {children}
